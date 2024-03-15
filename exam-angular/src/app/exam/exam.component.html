@@ -1,0 +1,65 @@
+<!-- <h1>
+    Remaing Time : <app-countdown-timer [endTime]="endTime"></app-countdown-timer>
+</h1> -->
+
+
+<div *ngIf="!examStarted">
+    
+    <div id="choose">
+        <h2 class="h2" style="padding: 2%;"><strong><i style="color: red;">Choose Exam Configurations</i></strong></h2>
+        <div class="example-container">
+            
+            <mat-form-field class="select">
+                <mat-label>Choose Language</mat-label>
+                <mat-select #stream [(ngModel)]="examStream">
+                <mat-option *ngFor="let stream of streams" value=stream>{{stream}}</mat-option>
+                <!-- <mat-option value="python" >Python</mat-option>
+                <mat-option value="javascript">JavaScript</mat-option>
+                <mat-option value="html" >Html</mat-option>
+                <mat-option value="css">Css</mat-option> -->
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="fields">
+                <mat-label>Select Number Of Questions</mat-label>
+                <input type="number" matInput placeholder="Placeholder"  placeholder="Number Of Questions" #questions [(ngModel)]="noOfQuestions">
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="submit" (click)="startExam()" [disabled]="!examStream || !noOfQuestions">START</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="examStarted">
+    
+    <h2 class="h2">EXAM ON {{examStream ? examStream.toUpperCase() : 'Unknown'}}</h2>
+    <form (submit)="onSubmit()" [formGroup]="form">
+        <div class="timer">
+            <h1>
+            Remaining Time : <span style="color: red;">{{ remainingTime.hours | number: '2.0' }}:{{ remainingTime.minutes | number: '2.0' }}:{{ remainingTime.seconds | number: '2.0' }}</span>
+            </h1>
+        </div>
+        <div *ngIf="questionsFormArray">
+            <div formArrayName="questions">
+                <div *ngFor="let questionGroup of questionsFormArray.controls; let i = index" class="questions" [formGroupName]="i">
+                    <h2>{{ questionList[i].question }}</h2>
+                    <div class="option">
+                        <div class="options">
+                            <label><input type="radio" formControlName="selectedOption" [value]="questionList[i].options.option1"> {{ questionList[i].options.option1 }}</label>
+                           
+                            <label><input type="radio" formControlName="selectedOption" [value]="questionList[i].options.option3"> {{ questionList[i].options.option3 }}</label>
+                        </div>
+                        <div class="options">
+                            <label><input type="radio" formControlName="selectedOption" [value]="questionList[i].options.option2"> {{ questionList[i].options.option2 }}</label>
+                           
+                            <label><input type="radio" formControlName="selectedOption" [value]="questionList[i].options.option4"> {{ questionList[i].options.option4 }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="submitBtn">
+          <button mat-raised-button color="primary" class="submit">Submit</button>
+        </div>
+    </form>
+      
+</div>

@@ -1,0 +1,30 @@
+<div id="main">
+    <form (submit)="submit()" [formGroup]="fg" id="form">
+        <h2 style="text-align: center;">Login Page</h2>
+        <div class="example-container">
+            <div class="example-container">
+                <mat-form-field appearance="outline" class="fields">
+                    <mat-label>username</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="username" >
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+        
+            <div class="example-container">
+                <mat-form-field appearance="outline" class="fields">
+                    <mat-label>password</mat-label>
+                    <input matInput placeholder="Placeholder"  placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="example-button-row" *ngIf="!register">
+            <button mat-raised-button color="primary" class="submit">Login</button>
+            <button mat-raised-button color="warn" routerLink="register" class="submit" (click)="change()">Register</button>
+        </div>
+        <div class="example-button-row" *ngIf="register">
+            <button mat-raised-button color="primary" class="submit" (click)="change()">Login</button>
+            <button mat-raised-button color="warn" routerLink="register" class="submit" [disabled]="!fg.valid">Register</button>
+        </div>
+    </form>
+</div>

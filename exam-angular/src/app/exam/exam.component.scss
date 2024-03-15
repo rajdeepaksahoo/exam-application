@@ -1,0 +1,71 @@
+form{
+    margin-left: 25%;
+    margin-top: 2%;
+}
+.questions{
+    padding: 2%;
+}
+
+.example-button-row button {
+    margin-left: 35%;
+    width: 120px;
+    margin-top: 5%;
+}
+#main{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+#form{
+    margin-top: 18%;
+}
+.example-button-row {
+    display: flex;
+    justify-content: flex-end; /* Align items to the end (right) of the container */
+  }
+  
+.fields{
+    width: 250px;
+}
+.submit{
+    width: 150px;
+    height: 40px;
+    margin-left: 100px;
+}
+.select{
+    width: 250px;
+}
+.example-container{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    margin-left: 41.5%;
+    margin-top: 1%;
+    height: 50%;
+}
+.h2{
+    margin-top: 5%;
+    text-align: center;
+    color: red;
+}
+.submitBtn{
+    margin-left: 38%;
+    padding: 2%;
+}
+label{
+    padding: 2%;
+}
+.options{
+    padding: 2%;
+}
+.option{
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    padding: 1%;
+    text-align: right;
+    width: 95%;
+    color: rebeccapurple;
+}
